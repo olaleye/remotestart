@@ -2,7 +2,9 @@
   "name": "mercuryholidays/test",
   "autoload": {
     "psr-4": {
-      "MercuryHolidays\\": "src/"
+      "MercuryHolidays\\": "src/",
+      "Core\\": "core/",
+      "App\\": "app/"
     }
   },
   "autoload-dev": {
