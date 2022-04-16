@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Search;
+namespace Tests\Unit\Search;
 
 use MercuryHolidays\Search\Searcher;
 use PHPUnit\Framework\TestCase;
