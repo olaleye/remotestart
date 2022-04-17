@@ -1,5 +1,54 @@
 # Mercury Holidays - Take Home Test
 
+# Documentation
+
+## Getting started
+### Prerequisities
+
+Recent versions of Docker and Docker-Compose are required for this project to run.
+Before you build the Docker image, within the project root run.
+
+```
+cp .env.example .env
+```
+
+#### Docker
+
+Use docker compose for easier setup and installing all the containers at once.
+
+_NOTE:_ In case port 80 is already used by another service like Nginx, Apache, or others, change it within the `docker-compose.yml` file.
+Should be 'your_port:80'. If this is your first time of building the application, the build stage might take sometime.
+
+To set up with Docker do the following steps:
+
+Build the image using:
+
+```
+docker-compose up -d
+```
+
+Install the dependencies
+
+```
+docker-compose exec app composer install
+```
+
+You can access the application using http://localhost/
+
+That is it!
+
+To run all the test 
+
+```
+docker-compose exec app vendor/bin/phpunit --testdox
+```
+
+To run a single test, e.g SearcherTest
+```
+docker-compose exec app vendor/bin/phpunit --testdox --filter SearcherTest
+```
+
+
 # Task Description
 Your task is to fill in the stubbed Property Searcher service to return correct results based on the input criteria.
 
