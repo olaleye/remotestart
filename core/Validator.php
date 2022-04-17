@@ -4,7 +4,6 @@ namespace Core;
 
 class Validator
 {
-    private bool $isValid = false;
     private array $errors = [];
 
     /**
@@ -71,11 +70,9 @@ class Validator
             !empty(trim($payload[$fieldName])) &&
             !is_numeric($payload[$fieldName])
         ){
-            $this->isValid = true;
             return;
         }
 
-        $this->isValid = false;
         $this->errors[$fieldName] = "The $fieldName is not a valid string!";
     }
 
@@ -85,23 +82,19 @@ class Validator
             is_numeric($payload[$fieldName]) &&
             is_int((int)$payload[$fieldName])
         ){
-            $this->isValid = true;
             return;
         }
 
-        $this->isValid = false;
         $this->errors[$fieldName] = "The $fieldName is not a valid integer!";
     }
 
     private function isInPayload(string $fieldName, array $payload): bool
     {
         if(! isset($payload[$fieldName]) || empty(trim($payload[$fieldName]))){
-            $this->isValid = false;
             $this->errors[$fieldName] = "The $fieldName is required!";
             return false;
         }
-
-        $this->isValid = true;
+        
         return true;
     }
 }

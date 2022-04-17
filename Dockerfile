@@ -12,7 +12,12 @@ RUN apk add --update && apk add --no-cache \
     libpng-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    pcre-dev ${PHPIZE_DEPS} \
+      && pecl install redis \
+      && docker-php-ext-enable redis \
+      && apk del pcre-dev ${PHPIZE_DEPS} \
+      && rm -rf /tmp/pear
 
 # Install PHP extensions
 RUN docker-php-ext-install exif pcntl bcmath gd
