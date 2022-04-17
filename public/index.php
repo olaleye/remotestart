@@ -21,5 +21,7 @@ $app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', [HomeController::class, 'create']);
 $app->router->post('/', [HomeController::class, 'store']);
+$app->router->get('/search', [HomeController::class, 'search']);
+$app->router->post('/search', [HomeController::class, 'show']);
 
 $app->run();
